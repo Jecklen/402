@@ -29,6 +29,17 @@
         android:layout_height="710dp"
         app:srcCompat="@mipmap/ic_gmap_foreground" />
 
+    <com.google.android.gms.maps.MapView
+        android:id="@+id/mapView"
+        android:layout_width="194dp"
+        android:layout_height="202dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="232dp"
+        android:layout_marginEnd="120dp"
+        android:layout_marginRight="120dp" />
+
 
 </RelativeLayout>
 

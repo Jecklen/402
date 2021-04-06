@@ -9,7 +9,9 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="38dp"
         android:text="Home Screen" />
 
     <Button
@@ -20,9 +22,9 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginStart="160dp"
-        android:layout_marginLeft="160dp"
-        android:layout_marginBottom="585dp"
+        android:layout_marginStart="156dp"
+        android:layout_marginLeft="156dp"
+        android:layout_marginBottom="569dp"
         android:text="Map" />
 
     <Button
@@ -32,10 +34,10 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginStart="92dp"
-        android:layout_marginLeft="92dp"
-        android:layout_marginBottom="514dp"
+        android:layout_centerInParent="true"
+        android:layout_marginStart="93dp"
+        android:layout_marginLeft="93dp"
+        android:layout_marginBottom="489dp"
         android:text="Discount Produce List" />
 
     <Button
@@ -46,8 +48,8 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginStart="119dp"
-        android:layout_marginLeft="119dp"
+        android:layout_marginStart="114dp"
+        android:layout_marginLeft="114dp"
         android:layout_marginTop="284dp"
         android:text="Recently Viewed" />
 
@@ -59,9 +61,9 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentBottom="true"
         android:layout_centerInParent="true"
-        android:layout_marginStart="129dp"
-        android:layout_marginLeft="129dp"
-        android:layout_marginBottom="191dp"
+        android:layout_marginStart="130dp"
+        android:layout_marginLeft="130dp"
+        android:layout_marginBottom="296dp"
         android:text="Preferences" />
 
     <Button
@@ -74,7 +76,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginStart="84dp"
         android:layout_marginLeft="84dp"
-        android:layout_marginBottom="65dp"
+        android:layout_marginBottom="207dp"
         android:text="Specific Zip w/ Keyword" />
 
 

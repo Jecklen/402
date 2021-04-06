@@ -8,6 +8,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 
+import com.google.android.gms.maps.MapView;
+
 public class Activity2 extends AppCompatActivity {
     private Button home;
     private ImageView gmap;
