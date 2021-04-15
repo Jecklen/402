@@ -15,7 +15,7 @@
         android:text="Home Screen" />
 
     <Button
-        android:id="@+id/screen2"
+        android:id="@+id/MapScreen"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
@@ -28,7 +28,7 @@
         android:text="Map" />
 
     <Button
-        android:id="@+id/screen3"
+        android:id="@+id/ProduceListScreen"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
@@ -41,7 +41,7 @@
         android:text="Discount Produce List" />
 
     <Button
-        android:id="@+id/screen4"
+        android:id="@+id/RecentlyViewedScreen"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
@@ -54,7 +54,7 @@
         android:text="Recently Viewed" />
 
     <Button
-        android:id="@+id/screen5"
+        android:id="@+id/PreferencesScreen"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
@@ -67,7 +67,7 @@
         android:text="Preferences" />
 
     <Button
-        android:id="@+id/screen6"
+        android:id="@+id/SearchByZipView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"

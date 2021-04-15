@@ -7,75 +7,73 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-import java.sql.Connection;
-
 public class MainActivity extends AppCompatActivity {
-    private Button screen2;
-    private Button screen3;
-    private Button screen4;
-    private Button screen5;
-    private Button screen6;
+    private Button mapScreen;
+    private Button produceListScreen;
+    private Button recentlyViewedScreen;
+    private Button preferenceScreen;
+    private Button searchByZipScreen;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        screen2 = (Button) findViewById(R.id.screen2);
-        screen2.setOnClickListener(new View.OnClickListener() {
+        mapScreen = (Button) findViewById(R.id.MapScreen);
+        mapScreen.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v){
-                openActivity2();
+                openMap();
             }
         });
-        screen3 = (Button) findViewById(R.id.screen3);
-        screen3.setOnClickListener(new View.OnClickListener() {
+        produceListScreen = (Button) findViewById(R.id.ProduceListScreen);
+        produceListScreen.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v){
-                openActivity3();
+                openProduceList();
             }
         });
-        screen4 = (Button) findViewById(R.id.screen4);
-        screen4.setOnClickListener(new View.OnClickListener() {
+        recentlyViewedScreen = (Button) findViewById(R.id.RecentlyViewedScreen);
+        recentlyViewedScreen.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v){
-                openActivity4();
+                openRecent();
             }
         });
-        screen5 = (Button) findViewById(R.id.screen5);
-        screen5.setOnClickListener(new View.OnClickListener() {
+        preferenceScreen = (Button) findViewById(R.id.PreferencesScreen);
+        preferenceScreen.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v){
-                openActivity5();
+                openPreferences();
             }
         });
-        screen6 = (Button) findViewById(R.id.screen6);
-        screen6.setOnClickListener(new View.OnClickListener() {
+        searchByZipScreen = (Button) findViewById(R.id.SearchByZipView);
+        searchByZipScreen.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v){
-                openActivity6();
+                openSearchByZip();
             }
         });
     }
 
 
-    public void openActivity2() {
-        Intent intent = new Intent(this, Activity2.class);
+    public void openMap() {
+        Intent intent = new Intent(this, MapActivity.class);
         startActivity(intent);
     }
-    public void openActivity3() {
-        Intent intent2 = new Intent(this, Activity3.class);
+    public void openProduceList() {
+        Intent intent2 = new Intent(this, ProduceListActivity.class);
         startActivity(intent2);
     }
-    public void openActivity4() {
-        Intent intent3 = new Intent(this, Activity4.class);
+    public void openRecent() {
+        Intent intent3 = new Intent(this, RecentListActivity.class);
         startActivity(intent3);
     }
-    public void openActivity5() {
-        Intent intent4 = new Intent(this, Activity5.class);
+    public void openPreferences() {
+        Intent intent4 = new Intent(this, PreferencesActivity.class);
         startActivity(intent4);
     }
-    public void openActivity6() {
-        Intent intent5 = new Intent(this, Activity6.class);
+    public void openSearchByZip() {
+        Intent intent5 = new Intent(this, SearchByZipActivity.class);
         startActivity(intent5);
     }
 
