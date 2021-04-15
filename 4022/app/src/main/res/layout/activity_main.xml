@@ -14,6 +14,12 @@
         android:layout_marginTop="38dp"
         android:text="Home Screen" />
 
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/main_page_background" />
+
     <Button
         android:id="@+id/MapScreen"
         android:layout_width="wrap_content"
@@ -22,10 +28,11 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginStart="156dp"
-        android:layout_marginLeft="156dp"
-        android:layout_marginBottom="569dp"
-        android:text="Map" />
+        android:layout_marginStart="157dp"
+        android:layout_marginLeft="157dp"
+        android:layout_marginBottom="131dp"
+        android:text="Map"
+        app:backgroundTint="#4CAF50" />
 
     <Button
         android:id="@+id/ProduceListScreen"
@@ -35,10 +42,11 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentBottom="true"
         android:layout_centerInParent="true"
-        android:layout_marginStart="93dp"
-        android:layout_marginLeft="93dp"
-        android:layout_marginBottom="489dp"
-        android:text="Discount Produce List" />
+        android:layout_marginStart="90dp"
+        android:layout_marginLeft="90dp"
+        android:layout_marginBottom="414dp"
+        android:text="Discount Produce List"
+        app:backgroundTint="#4CAF50" />
 
     <Button
         android:id="@+id/RecentlyViewedScreen"
@@ -48,10 +56,11 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginStart="114dp"
-        android:layout_marginLeft="114dp"
-        android:layout_marginTop="284dp"
-        android:text="Recently Viewed" />
+        android:layout_marginStart="115dp"
+        android:layout_marginLeft="115dp"
+        android:layout_marginTop="362dp"
+        android:text="Recently Viewed"
+        app:backgroundTint="#4CAF50" />
 
     <Button
         android:id="@+id/PreferencesScreen"
@@ -61,10 +70,11 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentBottom="true"
         android:layout_centerInParent="true"
-        android:layout_marginStart="130dp"
-        android:layout_marginLeft="130dp"
-        android:layout_marginBottom="296dp"
-        android:text="Preferences" />
+        android:layout_marginStart="131dp"
+        android:layout_marginLeft="131dp"
+        android:layout_marginBottom="20dp"
+        android:text="Preferences"
+        app:backgroundTint="#03A9F4" />
 
     <Button
         android:id="@+id/SearchByZipView"
@@ -74,10 +84,11 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginStart="84dp"
-        android:layout_marginLeft="84dp"
-        android:layout_marginBottom="207dp"
-        android:text="Specific Zip w/ Keyword" />
+        android:layout_marginStart="83dp"
+        android:layout_marginLeft="83dp"
+        android:layout_marginBottom="225dp"
+        android:text="Specific Zip w/ Keyword"
+        app:backgroundTint="#4CAF50" />
 
 
 </RelativeLayout>
