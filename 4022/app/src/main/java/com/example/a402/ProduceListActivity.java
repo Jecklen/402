@@ -59,7 +59,7 @@ public class ProduceListActivity extends ListActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.ProduceList_View);
+        setContentView(R.layout.produce_list_view);
 
         home = (Button) findViewById(R.id.home);
         home.setOnClickListener(new View.OnClickListener() {

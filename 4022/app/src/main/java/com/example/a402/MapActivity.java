@@ -14,7 +14,7 @@ public class MapActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.Map_View);
+        setContentView(R.layout.map_view);
         home = (Button) findViewById(R.id.home);
         home.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -27,7 +27,7 @@ public class MapActivity extends AppCompatActivity {
         gmap.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v){
-                openActivity3();
+                openProduceList();
             }
         });
     }
@@ -35,7 +35,7 @@ public class MapActivity extends AppCompatActivity {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
-    public void openActivity3() {
+    public void openProduceList() {
         Intent intent2 = new Intent(this, ProduceListActivity.class);
         startActivity(intent2);
     }

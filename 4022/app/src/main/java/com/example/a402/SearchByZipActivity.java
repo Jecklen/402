@@ -12,7 +12,7 @@ public class SearchByZipActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.SearchByZip_View);
+        setContentView(R.layout.search_zip_view);
 
         home = (Button) findViewById(R.id.home);
         home.setOnClickListener(new View.OnClickListener() {
