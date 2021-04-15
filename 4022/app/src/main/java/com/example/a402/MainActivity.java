@@ -18,6 +18,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        ProduceList pl = new ProduceList("kiwi", 5, 5, 111,03, 02);
+        pl.save();
+
+
         mapScreen = (Button) findViewById(R.id.MapScreen);
         mapScreen.setOnClickListener(new View.OnClickListener() {
             @Override
