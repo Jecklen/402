@@ -67,6 +67,9 @@ public class ProduceListActivity extends ListActivity {
     protected void onCreate(Bundle savedInstanceState) {
         String[] prodNames = new String[produceList.size()];
 
+        CSVManager csvM = new CSVManager();
+        csvM.SortData();
+
         Log.d("produce", produceList.toString());
 
         super.onCreate(savedInstanceState);

@@ -27,6 +27,9 @@ import java.util.List;
 public class MapActivity extends AppCompatActivity {
     private Button home;
     private ImageView gmap;
+    private GoogleMap mMap;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -69,6 +72,7 @@ public class MapActivity extends AppCompatActivity {
                 e.printStackTrace();
             }
             Address address = addressList.get(0);
+
             LatLng latLng = new LatLng(address.getLatitude(), address.getLongitude());
             mMap.addMarker(new MarkerOptions().position(latLng).title("Marker"));
             mMap.animateCamera(CameraUpdateFactory.newLatLng(latLng));
