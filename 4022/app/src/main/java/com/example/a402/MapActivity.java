@@ -1,6 +1,8 @@
 package com.example.a402;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
 import android.os.Bundle;
@@ -20,11 +22,13 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.fragment.app.FragmentActivity;
 
 import java.io.IOException;
 import java.util.List;
 
-public class MapActivity extends AppCompatActivity {
+public class MapActivity extends FragmentActivity implements OnMapReadyCallback  {
     private Button home;
     private ImageView gmap;
     private GoogleMap mMap;
@@ -35,6 +39,12 @@ public class MapActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.map_view);
         home = (Button) findViewById(R.id.home);
+        // Obtain the SupportMapFragment and get notified when the map is ready to be used.
+        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
+                .findFragmentById(R.id.map);
+        mapFragment.getMapAsync(this);
+
+
         home.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v){
@@ -78,4 +88,17 @@ public class MapActivity extends AppCompatActivity {
             mMap.animateCamera(CameraUpdateFactory.newLatLng(latLng));
         }
     }
+
+    public void onMapReady(GoogleMap googleMap) {
+        mMap = googleMap;
+        // Add a marker in Sydney and move the camera
+        LatLng sydney = new LatLng(33.4484, -112.0740);
+        mMap.addMarker(new MarkerOptions().position(sydney).title("Phoenix, Arizona"));
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            return;
+        }
+        mMap.setMyLocationEnabled(true);
+    }
 }
+
