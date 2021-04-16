@@ -13,15 +13,15 @@ import android.widget.TextView;
 public class CustomAdapter extends ArrayAdapter {
     private String[] productNames;
     private String[] productQuantity;
-    private Integer[] imageid;
+
     private Activity context;
 
-    public CustomAdapter(Activity context, String[] prodNames, String[] prodQuant, Integer[] imageid) {
+    public CustomAdapter(Activity context, String[] prodNames, String[] prodQuant) {
         super(context, R.layout.row_item, prodNames);
         this.context = context;
         this.productNames = prodNames;
         this.productQuantity = prodQuant;
-        this.imageid = imageid;
+
 
     }
 
@@ -33,11 +33,9 @@ public class CustomAdapter extends ArrayAdapter {
             row = inflater.inflate(R.layout.row_item, null, true);
         TextView textViewProduct = (TextView) row.findViewById(R.id.textViewProduct);
         TextView textViewQuantity = (TextView) row.findViewById(R.id.textViewQuantity);
-        ImageView imageProduct = (ImageView) row.findViewById(R.id.imageViewProduct);
 
         textViewProduct.setText(productNames[position]);
         textViewQuantity.setText("Stock: " + productQuantity[position]);
-        imageProduct.setImageResource(imageid[position]);
         return  row;
     }
 }

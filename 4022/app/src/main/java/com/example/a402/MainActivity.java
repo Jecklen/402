@@ -9,6 +9,10 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 import com.orm.SugarRecord;
 
 import java.io.BufferedReader;
@@ -36,6 +40,8 @@ public class MainActivity extends AppCompatActivity {
         SortData(R.raw.albertsons_data);
         SortData(R.raw.frys_data);
         SortData(R.raw.safeway_data);
+
+        addNewRecord();
 
 
 
@@ -78,6 +84,15 @@ public class MainActivity extends AppCompatActivity {
                 openSearchByZip();
             }
         });
+    }
+
+    private void addNewRecord() {
+        for(int i = 0; i < produceDataList.size(); i++){
+            ProduceList pl = new ProduceList(produceDataList.get(i).getName(), produceDataList.get(i).getStock(),
+                    produceDataList.get(i).getPrice(), produceDataList.get(i).getItemID(), produceDataList.get(i).getGroupID(),
+                    produceDataList.get(i).getStoreID());
+            pl.save();
+        }
     }
 
 
@@ -136,5 +151,6 @@ public class MainActivity extends AppCompatActivity {
             e.printStackTrace();
         }
     }
+
 
 }

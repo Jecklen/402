@@ -15,60 +15,20 @@ public class ProduceListActivity extends ListActivity {
     ListView listView;
 
     List<ProduceList> produceList = ProduceList.listAll(ProduceList.class);
-    int i = 0;
 
-    private String prodNames[] = {
-            "Apple",
-            "Carrot",
-            "Coconut",
-            "Tomato",
-            "Apple",
-            "Carrot",
-            "Coconut",
-            "Tomato",
-            "Apple",
-            "Carrot",
-            "Coconut",
-            "Tomato"
-    };
+    private String prodNames[] = new String[produceList.size()];
 
+    private String prodQuant[] = new String[produceList.size()];
 
-    private String prodQuant[] = {
-            "High",
-            "Low",
-            "Low",
-            "Medium",
-            "High",
-            "Low",
-            "Low",
-            "Medium",
-            "High",
-            "Low",
-            "Low",
-            "Medium"
-    };
-
-    private Integer imageid[] = {
-            R.drawable.apple,
-            R.drawable.carrot,
-            R.drawable.coconut,
-            R.drawable.tomato,
-            R.drawable.apple,
-            R.drawable.carrot,
-            R.drawable.coconut,
-            R.drawable.tomato,
-            R.drawable.apple,
-            R.drawable.carrot,
-            R.drawable.coconut,
-            R.drawable.tomato
-    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        String[] prodNames = new String[produceList.size()];
-
-        CSVManager csvM = new CSVManager();
-        csvM.SortData();
+        int i = 0;
+        while(i < produceList.size()){
+            prodNames[i] = produceList.get(i).Item;
+            prodQuant[i] = String.valueOf(produceList.get(i).Stock);
+            i++;
+        }
 
         Log.d("produce", produceList.toString());
 
@@ -84,7 +44,7 @@ public class ProduceListActivity extends ListActivity {
         });
         listView = (ListView)findViewById(android.R.id.list);
 
-        CustomAdapter customAdapter = new CustomAdapter(this, prodNames, prodQuant, imageid);
+        CustomAdapter customAdapter = new CustomAdapter(this, prodNames, prodQuant);
         listView.setAdapter(customAdapter);
 
 /*        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
