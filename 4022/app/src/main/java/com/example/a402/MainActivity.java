@@ -137,4 +137,8 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    public void onMapSearch(View view) {
+        MapActivity ma = new MapActivity();
+        ma.onMapSearch(view);
+    }
 }
