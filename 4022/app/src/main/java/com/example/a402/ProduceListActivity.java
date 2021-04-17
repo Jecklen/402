@@ -16,10 +16,10 @@ public class ProduceListActivity extends ListActivity {
 
     List<ProduceList> produceList = ProduceList.listAll(ProduceList.class);
 
+    // Create variables to hold information from database
     private String prodNames[] = new String[produceList.size()];
-
     private String prodQuant[] = new String[produceList.size()];
-
+    private int imageInt[] = new int[produceList.size()];
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +27,21 @@ public class ProduceListActivity extends ListActivity {
         while(i < produceList.size()){
             prodNames[i] = produceList.get(i).Item;
             prodQuant[i] = String.valueOf(produceList.get(i).Stock);
+
+            switch(produceList.get(i).StoreID){
+                case 1:
+                    imageInt[i] = R.drawable.frys_logo;
+                    break;
+                case 2:
+                    imageInt[i] = R.drawable.safeway_logo;
+                    break;
+                case 3:
+                    imageInt[i] = R.drawable.albertsons_logo;
+                    break;
+                default:
+                    break;
+            }
+
             i++;
         }
 
@@ -44,7 +59,7 @@ public class ProduceListActivity extends ListActivity {
         });
         listView = (ListView)findViewById(android.R.id.list);
 
-        CustomAdapter customAdapter = new CustomAdapter(this, prodNames, prodQuant);
+        CustomAdapter customAdapter = new CustomAdapter(this, prodNames, prodQuant, imageInt);
         listView.setAdapter(customAdapter);
 
 /*        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
