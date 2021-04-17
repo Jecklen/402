@@ -5,14 +5,18 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewParent;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.List;
 
 public class ProduceListActivity extends ListActivity {
     private Button home;
     ListView listView;
+    private IndexCounter ic = new IndexCounter();
 
     List<ProduceList> produceList = ProduceList.listAll(ProduceList.class);
 
@@ -20,9 +24,13 @@ public class ProduceListActivity extends ListActivity {
     private String prodNames[] = new String[produceList.size()];
     private String prodQuant[] = new String[produceList.size()];
     private int imageInt[] = new int[produceList.size()];
+    private int tag[] = new int[produceList.size()];
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+
+
         int i = 0;
         while(i < produceList.size()){
             prodNames[i] = produceList.get(i).Item;
@@ -41,7 +49,7 @@ public class ProduceListActivity extends ListActivity {
                 default:
                     break;
             }
-
+            tag[i] = i;
             i++;
         }
 
@@ -57,9 +65,12 @@ public class ProduceListActivity extends ListActivity {
                 openMainActivity();
             }
         });
+
+
+
         listView = (ListView)findViewById(android.R.id.list);
 
-        CustomAdapter customAdapter = new CustomAdapter(this, prodNames, prodQuant, imageInt);
+        CustomAdapter customAdapter = new CustomAdapter(this, prodNames, prodQuant, imageInt, tag);
         listView.setAdapter(customAdapter);
 
 /*        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -74,6 +85,15 @@ public class ProduceListActivity extends ListActivity {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
+
+    public void likeClicked(View v){
+        int ID = (int) v.getTag();
+
+        Toast.makeText(this, "Liked " + produceList.get(ID).Item, Toast.LENGTH_SHORT).show();
+    }
+
+
+
 
 
 }

@@ -36,14 +36,16 @@
         android:layout_row="1"
         android:layout_column="1" />
 
-    <ImageView
+    <ImageButton
 
-        android:layout_rowSpan="2"
-        android:layout_width="50dp"
-        android:layout_height="40dp"
-
+        android:layout_rowSpan="1"
+        android:layout_width="80dp"
+        android:layout_height="60dp"
+        android:background="@color/white"
+        android:src="@drawable/thumb"
         android:scaleType="fitXY"
-        android:id="@+id/imageViewLike"
+        android:id="@+id/imageButtonLike"
+        android:onClick="likeClicked"
         android:layout_row="0"
-        android:layout_column="0" />
+        android:layout_column="2" />
 </GridLayout>

@@ -158,6 +158,8 @@ public class MainActivity extends AppCompatActivity {
         MapActivity ma = new MapActivity();
         ma.onMapSearch(view);
     }
+
+
 }
 
 
