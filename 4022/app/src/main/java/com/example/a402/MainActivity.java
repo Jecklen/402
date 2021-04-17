@@ -36,13 +36,13 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        deleteAllRecords();
+        SugarRecord.deleteAll(ProduceList.class);
 
-        SortData(R.raw.albertsons_data);
-        SortData(R.raw.frys_data);
-        SortData(R.raw.safeway_data);
+        AddProduceData(R.raw.albertsons_data);
+        AddProduceData(R.raw.frys_data);
+        AddProduceData(R.raw.safeway_data);
 
-        addNewRecord();
+        addNewProduceRecord();
 
 
         ProduceList pl = new ProduceList("kiwi", 5, 5, 111, 03, 02);
@@ -86,7 +86,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    private void addNewRecord() {
+    private void addNewProduceRecord() {
         for (int i = 0; i < produceDataList.size(); i++) {
             ProduceList pl = new ProduceList(produceDataList.get(i).getName(), produceDataList.get(i).getStock(),
                     produceDataList.get(i).getPrice(), produceDataList.get(i).getItemID(), produceDataList.get(i).getGroupID(),
@@ -125,7 +125,7 @@ public class MainActivity extends AppCompatActivity {
         SugarRecord.deleteAll(ProduceList.class);
     }
 
-    public void SortData(int data) {
+    public void AddProduceData(int data) {
         InputStream is = getResources().openRawResource(data);
         BufferedReader reader = new BufferedReader(
                 new InputStreamReader(is, Charset.forName("UTF-8"))

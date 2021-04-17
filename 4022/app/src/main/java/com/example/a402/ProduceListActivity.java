@@ -1,6 +1,7 @@
 package com.example.a402;
 
 import android.app.ListActivity;
+import android.content.ClipData;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -19,6 +20,7 @@ public class ProduceListActivity extends ListActivity {
     private IndexCounter ic = new IndexCounter();
 
     List<ProduceList> produceList = ProduceList.listAll(ProduceList.class);
+    List<LikeManager> likeManager = LikeManager.listAll(LikeManager.class);
 
     // Create variables to hold information from database
     private String prodNames[] = new String[produceList.size()];
@@ -90,9 +92,42 @@ public class ProduceListActivity extends ListActivity {
         int ID = (int) v.getTag();
 
         Toast.makeText(this, "Liked " + produceList.get(ID).Item, Toast.LENGTH_SHORT).show();
+
+        int prodExists = ProductInDatabase(ID);
+        if(prodExists > 0) {
+            AddLike(prodExists);
+        }
+        else
+        {
+            AddLikedItem(produceList.get(ID).ItemID, produceList.get(ID).Item);
+        }
     }
 
+    public int ProductInDatabase(int ID){
+        int itemID = produceList.get(ID).ItemID;
+        int i = 0;
+        if(likeManager.size() != 0){
+            while(i < likeManager.size()){
+                if(likeManager.get(i).ItemID == itemID){
+                    return i;
+                }
+            }
 
+        }
+        return 0;
+    }
+
+    public void AddLike(int itemExists){
+        // If greater than 0 than the item does exist
+            LikeManager lm = LikeManager.findById(LikeManager.class, Long.parseLong(String.valueOf(itemExists)));
+            lm.LikeNum = lm.LikeNum + 1;
+            lm.save();
+    }
+
+    public void AddLikedItem(int ItemID, String ItemName){
+        LikeManager lm = new LikeManager(ItemName, ItemID, 1);
+        lm.save();
+    }
 
 
 
