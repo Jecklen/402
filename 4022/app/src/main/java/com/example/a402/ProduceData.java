@@ -17,6 +17,16 @@ public class ProduceData {
     private int GroupID;
     private int StoreID;
 
+    public int getLikes() {
+        return Likes;
+    }
+
+    public void setLikes(int likes) {
+        Likes = likes;
+    }
+
+    private int Likes;
+
     public String getName() {
         return name;
     }

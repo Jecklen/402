@@ -13,6 +13,7 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.orm.SugarDb;
 import com.orm.SugarRecord;
 
 import java.io.BufferedReader;
@@ -31,22 +32,12 @@ public class MainActivity extends AppCompatActivity {
     private Button searchByZipScreen;
     private List<ProduceData> produceDataList = new ArrayList<>();
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        SugarRecord.deleteAll(ProduceList.class);
-
-        AddProduceData(R.raw.albertsons_data);
-        AddProduceData(R.raw.frys_data);
-        AddProduceData(R.raw.safeway_data);
-
-        addNewProduceRecord();
-
-
-        ProduceList pl = new ProduceList("kiwi", 5, 5, 111, 03, 02);
-        pl.save();
 
 
         mapScreen = (Button) findViewById(R.id.MapScreen);
@@ -90,10 +81,11 @@ public class MainActivity extends AppCompatActivity {
         for (int i = 0; i < produceDataList.size(); i++) {
             ProduceList pl = new ProduceList(produceDataList.get(i).getName(), produceDataList.get(i).getStock(),
                     produceDataList.get(i).getPrice(), produceDataList.get(i).getItemID(), produceDataList.get(i).getGroupID(),
-                    produceDataList.get(i).getStoreID());
+                    produceDataList.get(i).getStoreID(), produceDataList.get(i).getLikes());
             pl.save();
         }
     }
+
 
 
     public void openMap() {
@@ -135,16 +127,30 @@ public class MainActivity extends AppCompatActivity {
         try {
             while ((line = reader.readLine()) != null) {
                 String[] tokens = line.split(",");
-
                 ProduceData pd = new ProduceData();
-                pd.setName(tokens[0]);
-                pd.setStock(Integer.parseInt(tokens[1]));
-                pd.setPrice(Float.parseFloat(tokens[2]));
-                pd.setItemID(Integer.parseInt(tokens[3]));
-                pd.setGroupID(Integer.parseInt(tokens[4]));
-                pd.setStoreID(Integer.parseInt(tokens[5]));
+                int x = 0;
+                boolean exists = false;
+                while(x < produceDataList.size()){
+                    if(produceDataList.get(x).getItemID() == Integer.parseInt(tokens[3])
+                    ){
+                        exists = true;
+                    }
+                    x++;
+                }
+                if(exists == false) {
 
-                produceDataList.add(pd);
+                    pd.setName(tokens[0]);
+                    pd.setStock(Integer.parseInt(tokens[1]));
+                    pd.setPrice(Float.parseFloat(tokens[2]));
+                    pd.setItemID(Integer.parseInt(tokens[3]));
+                    pd.setGroupID(Integer.parseInt(tokens[4]));
+                    pd.setStoreID(Integer.parseInt(tokens[5]));
+                    pd.setLikes(0);
+
+                    produceDataList.add(pd);
+                }
+
+
 
                 Log.d("MyActivity", "JustCreated: " + pd);
             }

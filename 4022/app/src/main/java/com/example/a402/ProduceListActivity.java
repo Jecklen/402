@@ -3,6 +3,7 @@ package com.example.a402;
 import android.app.ListActivity;
 import android.content.ClipData;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -12,6 +13,13 @@ import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import androidx.annotation.RequiresApi;
+
+import com.orm.query.Condition;
+import com.orm.query.Select;
+
+import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 
 public class ProduceListActivity extends ListActivity {
@@ -19,15 +27,17 @@ public class ProduceListActivity extends ListActivity {
     ListView listView;
     private IndexCounter ic = new IndexCounter();
 
-    List<ProduceList> produceList = ProduceList.listAll(ProduceList.class);
-    List<LikeManager> likeManager = LikeManager.listAll(LikeManager.class);
+    List<ProduceList> produceList = Select.from(ProduceList.class)
+            .orderBy("Likes desc")
+            .list();
+
 
     // Create variables to hold information from database
     private String prodNames[] = new String[produceList.size()];
     private String prodQuant[] = new String[produceList.size()];
     private int imageInt[] = new int[produceList.size()];
     private int tag[] = new int[produceList.size()];
-
+    private int likes[] = new int[produceList.size()];
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -37,6 +47,13 @@ public class ProduceListActivity extends ListActivity {
         while(i < produceList.size()){
             prodNames[i] = produceList.get(i).Item;
             prodQuant[i] = String.valueOf(produceList.get(i).Stock);
+            if(produceList.get(i).Likes > 0){
+                likes[i] = produceList.get(i).Likes;
+            }
+            else
+            {
+                likes[i] = 0;
+            }
 
             switch(produceList.get(i).StoreID){
                 case 1:
@@ -93,41 +110,12 @@ public class ProduceListActivity extends ListActivity {
 
         Toast.makeText(this, "Liked " + produceList.get(ID).Item, Toast.LENGTH_SHORT).show();
 
-        int prodExists = ProductInDatabase(ID);
-        if(prodExists > 0) {
-            AddLike(prodExists);
-        }
-        else
-        {
-            AddLikedItem(produceList.get(ID).ItemID, produceList.get(ID).Item);
-        }
+        produceList.get(ID).Likes += 1;
+        produceList.get(ID).save();
+
     }
 
-    public int ProductInDatabase(int ID){
-        int itemID = produceList.get(ID).ItemID;
-        int i = 0;
-        if(likeManager.size() != 0){
-            while(i < likeManager.size()){
-                if(likeManager.get(i).ItemID == itemID){
-                    return i;
-                }
-            }
 
-        }
-        return 0;
-    }
-
-    public void AddLike(int itemExists){
-        // If greater than 0 than the item does exist
-            LikeManager lm = LikeManager.findById(LikeManager.class, Long.parseLong(String.valueOf(itemExists)));
-            lm.LikeNum = lm.LikeNum + 1;
-            lm.save();
-    }
-
-    public void AddLikedItem(int ItemID, String ItemName){
-        LikeManager lm = new LikeManager(ItemName, ItemID, 1);
-        lm.save();
-    }
 
 
 
