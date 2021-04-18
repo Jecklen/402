@@ -38,6 +38,12 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // RUN THIS ONCE, CLOSE APP THEN COMMENT OUT
+        AddProduceData(R.raw.albertsons_data);
+        AddProduceData(R.raw.frys_data);
+        AddProduceData(R.raw.safeway_data);
+        addNewProduceRecord();
+        //------------------------------------------
 
 
         mapScreen = (Button) findViewById(R.id.MapScreen);
